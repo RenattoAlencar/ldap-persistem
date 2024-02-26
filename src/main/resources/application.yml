@@ -1,0 +1,10 @@
+spring:
+  ldap:
+    base: dc=user,dc=com
+    urls: ldap://localhost:389
+    username: cn=admin,dc=user,dc=com
+    password: dev123#
+
+logging:
+  level:
+    org.springframework.security: DEBUG

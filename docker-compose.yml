@@ -3,8 +3,21 @@ services:
   ldap:
     image: osixia/openldap
     environment:
-      LDAP_ORGANISATION: "MyOrg"
-      LDAP_DOMAIN: "example.com"
-      LDAP_ADMIN_PASSWORD: "adminpassword"
+      - LDAP_ORGANISATION=User
+      - LDAP_DOMAIN=user
+      - LDAP_ADMIN_PASSWORD=dev123#
     ports:
       - "389:389"
+      - "636:636"
+    volumes:
+      - ldap-data:/var/lib/ldap
+      - ldap-config:/etc/ldap/slapd.d
+    networks:
+      - ldap-network
+
+volumes:
+  ldap-data:
+  ldap-config:
+
+networks:
+  ldap-network:
